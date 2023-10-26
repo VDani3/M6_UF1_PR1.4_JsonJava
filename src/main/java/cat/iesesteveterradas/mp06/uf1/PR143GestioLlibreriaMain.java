@@ -1,18 +1,19 @@
 package cat.iesesteveterradas.mp06.uf1;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class PR143GestioLlibreriaMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Practica de JSON en Java\n");
-        Main ex = new Main();
+        PR143GestioLlibreriaMain ex = new PR143GestioLlibreriaMain();
 
           //Comença
         List<Map<String,Object>> info = ex.llecturaJSONJackson("data/llibres_input.json");
@@ -32,6 +33,7 @@ public class Main {
         try {
               //Fa el Mapper i llegeix tot els 'Diccionaris' que n'hi han
             ObjectMapper objectMapper = new ObjectMapper();
+            
             llistaDeLlibres = objectMapper.readValue(new File(file), objectMapper.getTypeFactory().constructCollectionType(List.class, Map.class));
             
             System.out.println("Resultat de llectura: ");
@@ -87,6 +89,8 @@ public class Main {
 
     public void guardar(List<Map<String, Object>> l, String file) {
       ObjectMapper oM = new ObjectMapper();
+      oM.enable(SerializationFeature.INDENT_OUTPUT);
+      
       try {
         oM.writeValue(new File(file), l);
         System.out.println("Guardat correctament");
