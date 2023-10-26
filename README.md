@@ -1,6 +1,5 @@
-# Exemples DAM2-MP06 #
 
-En aquest projecte hi ha un exemple de Hibernate tipus XML Many To Many
+Daniel Villa
 
 ## Compilació i funcionament ##
 
